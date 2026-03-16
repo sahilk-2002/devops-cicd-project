@@ -12,9 +12,9 @@ spec:
       labels:
         app: devops-app
     spec:
-      imagePullPolicy: Always
       containers:
       - name: devops-app
         image: sahilkulkarni585/devops-demo:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
