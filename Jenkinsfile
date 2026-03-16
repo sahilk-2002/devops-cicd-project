@@ -12,7 +12,7 @@ pipeline {
             }
         }
         stage('Docker Push') { 
-        steps { 
+            steps { 
             sh 'docker push $IMAGE_NAME:latest' 
         } 
 
