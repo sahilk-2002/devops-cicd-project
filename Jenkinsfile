@@ -11,6 +11,11 @@ pipeline {
                 sh 'docker build -t $IMAGE:latest .'
             }
         }
+        stage('Docker Push') { 
+        steps { 
+            sh 'docker push $IMAGE_NAME:latest' 
+        } 
+
         
     stage('Docker Login') { 
             steps { 
@@ -18,12 +23,7 @@ pipeline {
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin' } 
             } 
         }
-    stage('Docker Push') { 
-        steps { 
-            sh 'docker push $IMAGE_NAME:latest' 
-        } 
-    }
-
+    
     stage('Deploy to Kubernetes') {
             steps {
                 sh 'kubectl apply -f deployment.yaml'
