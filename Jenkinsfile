@@ -6,17 +6,18 @@ pipeline {
     }
 
     stages {
+        
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE:latest .'
             }
         }
+        
         stage('Docker Push') { 
             steps { 
             sh 'docker push $IMAGE_NAME:latest' 
-        } 
-
-        
+        }
+    }
         stage('Docker Login') { 
             steps { 
                 withCredentials([usernamePassword( credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS' )]) {
