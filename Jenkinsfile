@@ -7,13 +7,7 @@ pipeline {
 
     stages {
 
-        stage('Clone Repo') {
-            steps {
-                git branch: 'main', url: 'https://github.com/sahilk-2002/devops-cicd-project.git'
-            }
-        }
-
-        stage('Build Docker Image') {
+       stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE:latest .'
             }
