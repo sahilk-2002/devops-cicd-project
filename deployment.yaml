@@ -12,7 +12,7 @@ spec:
       labels:
         app: devops-app
     spec:
-      ImagePullPOlicy: Always
+      imagePullPolicy: Always
       containers:
       - name: devops-app
         image: sahilkulkarni585/devops-demo:latest
